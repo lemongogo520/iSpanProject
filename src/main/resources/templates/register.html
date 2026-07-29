@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>註冊帳號</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+</head>
+<body>
+
+<div class="login-container">
+    <div class="login-card">
+        <h2 class="text-center">建立帳號</h2>
+        <p class="subtitle text-center">請填寫以下資料完成註冊</p>
+        <div class="text-danger small mb-3" id="registerError" th:text="${error}"></div>
+        <form id="registerForm" th:action="@{/register}" th:object="${registerDTO}" method="post">
+            <div class="mb-3">
+                <div class="input-group">
+                    <span class="input-group-text">
+                        <i class="bi bi-person"></i>
+                    </span>
+                    <input type="text" class="form-control" th:field="*{account}" placeholder="請輸入帳號" maxlength="30">
+                </div>
+            </div>
+            <div class="mb-3">
+                <div class="input-group">
+                    <span class="input-group-text">
+                        <i class="bi bi-lock"></i>
+                    </span>
+                    <input type="password" class="form-control" th:field="*{password}" placeholder="請輸入密碼" maxlength="30">
+			        <button type="button" class="btn btn-outline-secondary" id="togglePassword">
+			            <i class="bi bi-eye"></i>
+			        </button>
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="input-group">
+                    <span class="input-group-text">
+                        <i class="bi bi-lock-fill"></i>
+                    </span>
+                    <input type="password" class="form-control" th:field="*{confirmPassword}" placeholder="請再次輸入密碼" maxlength="30">
+			        <button type="button" class="btn btn-outline-secondary" id="toggleConfirmPassword">
+			            <i class="bi bi-eye"></i>
+			        </button>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success login-btn">
+                註冊
+            </button>
+        </form>
+        <div class="register-link">
+            已經有帳號？
+            <a th:href="@{/login}">返回登入</a>
+        </div>
+    </div>
+</div>
+
+<script>
+	let registerForm=document.getElementById("registerForm");
+	
+	registerForm.addEventListener("submit",function(e){
+	
+	    let account=document.getElementById("account").value.trim();
+	    let password=document.getElementById("password").value.trim();
+	    let confirmPassword=document.getElementById("confirmPassword").value.trim();
+	    let registerError=document.getElementById("registerError");
+	
+	    registerError.innerHTML="";
+	
+	    if(account===""){
+	        registerError.innerHTML="請輸入帳號";
+	        e.preventDefault();
+	        return;
+	    }
+	
+	    if(password===""){
+	        registerError.innerHTML="請輸入密碼";
+	        e.preventDefault();
+	        return;
+	    }
+	
+	    if(confirmPassword===""){
+	        registerError.innerHTML="請再次輸入密碼";
+	        e.preventDefault();
+	        return;
+	    }
+	
+	    if(password!==confirmPassword){
+	        registerError.innerHTML="兩次輸入的密碼不一致";
+	        e.preventDefault();
+	        return;
+	    }
+	
+	});
+	
+	document.getElementById("account").addEventListener("input",function(){
+	    document.getElementById("registerError").innerHTML="";
+	});
+	
+	document.getElementById("password").addEventListener("input",function(){
+	    document.getElementById("registerError").innerHTML="";
+	});
+	
+	document.getElementById("confirmPassword").addEventListener("input",function(){
+	    document.getElementById("registerError").innerHTML="";
+	});
+	
+	//查看密碼
+	document.getElementById("togglePassword").addEventListener("click", function(){
+
+    let password = document.getElementById("password");
+    let icon = this.querySelector("i");
+
+    if(password.type === "password"){
+
+        password.type = "text";
+        icon.classList.remove("bi-eye");
+        icon.classList.add("bi-eye-slash");
+
+    }else{
+
+        password.type = "password";
+        icon.classList.remove("bi-eye-slash");
+        icon.classList.add("bi-eye");
+    }
+	});
+	
+	//查看確認密碼
+	document.getElementById("toggleConfirmPassword").addEventListener("click", function(){
+
+    let password = document.getElementById("confirmPassword");
+    let icon = this.querySelector("i");
+
+    if(password.type === "password"){
+
+        password.type = "text";
+        icon.classList.remove("bi-eye");
+        icon.classList.add("bi-eye-slash");
+
+    }else{
+
+        password.type = "password";
+        icon.classList.remove("bi-eye-slash");
+        icon.classList.add("bi-eye");
+    }
+	});
+</script>
+
+</body>
+</html>
