@@ -25,6 +25,11 @@ public class HomeController {
     public String index() {
         return "redirect:/login";
     }
+    
+    @GetMapping("/getfile")
+    public String getFile() {
+    	return "getfile";
+    }
 
     @GetMapping("/home")
     public String home() {

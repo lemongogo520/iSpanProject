@@ -34,7 +34,6 @@ public class LoginController {
             , HttpSession session
 			, HttpServletResponse response) {
 
-		System.out.println(session.getAttribute("loginUserId"));
 	    if(session.getAttribute("loginUserId") != null){
 
 		    Users rememberLogin = loginService.checkRememberToken(request, "remember_token");

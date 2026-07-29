@@ -5,7 +5,7 @@ import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface LoginTokenRepository extends JpaRepository<LoginToken, UUID> {
+public interface LoginTokenRepository extends JpaRepository<LoginToken, Integer> {
 	Optional<LoginToken> findLoginTokenByToken(String hashToken);
 }
     
