@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>系統設定</title>
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>
+<body>
+<div class="layout">
+
+    <div th:replace="~{common/sidebar :: sidebar}">
+    </div>
+
+    <main class="content">
+     <div class="topbar">
+            <h2>使用者管理</h2>
+
+            <form method="get">
+                <input type="text" name="keyword" placeholder="搜尋帳號">
+                <button type="submit">搜尋</button>
+            </form>
+        </div>
+
+        <form>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th><input type="checkbox"></th>
+                        <th>帳號</th>
+                        <th>姓名</th>
+                        <th>權限</th>
+                        <th>狀態</th>
+                        <th>建立時間</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr th:each="user : ${users}">
+                        <td><input type="checkbox" name="ids" th:value="${user.id}"></td>
+                        <td th:text="${user.account}"></td>
+                        <td th:text="${user.userDetail.name}"></td>
+                        <td>
+                            <select>
+                                <option>SystemAdmin</option>
+                                <option>Manager</option>
+                                <option>User</option>
+                            </select>
+                        </td>
+                        <td><span th:text="${user.active ? '啟用' : '停用'}"></span></td>
+                        <td th:text="${#temporals.format(user.createTime,'yyyy/MM/dd HH:mm')}"></td>
+                        <td><a th:href="@{/admin/users/edit(id=${user.id})}">編輯</a></td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+            <div class="toolbar">
+                <button type="submit">批次修改權限</button>
+                <button type="submit">停用</button>
+            </div>
+
+        </form>
+    
+    </main>
+
+</div>
+</body>
+</html>

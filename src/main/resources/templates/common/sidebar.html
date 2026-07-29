@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<aside class="sidebar" th:fragment="sidebar">
+
+    <div class="logo">
+        <a th:href="@{/home}" >
+            回首頁
+        </a>
+    </div>
+    <ul class="menu">
+
+        <li th:classappend="${activeMenu == T(forum.board.enums.ConfigMenuType).CONFIG} ? 'active'">
+            <a th:href="@{/config}">
+                管理面板
+            </a>
+        </li>
+        <li th:classappend="${activeMenu == T(forum.board.enums.ConfigMenuType).USERS} ? 'active'">
+            <a th:href="@{/config/users}">
+                使用者管理
+            </a>
+        </li>
+        <li th:classappend="${activeMenu == T(forum.board.enums.ConfigMenuType).PERMISSIONS} ? 'active'">
+            <a th:href="@{/config/permissions}">
+                權限管理
+            </a>
+        </li>
+        <li th:classappend="${activeMenu == T(forum.board.enums.ConfigMenuType).SETTINGS} ? 'active'">
+            <a th:href="@{/config/settings}">
+                系統設定
+            </a>
+        </li>
+        <li>
+            <a href="#"
+               onclick="document.getElementById('logoutForm').submit();return false;">
+                登出
+            </a>
+            <form id="logoutForm"
+                  th:action="@{/logout}"
+                  method="post"
+                  style="display:none">
+            </form>
+        </li>
+    </ul>
+</aside>
+</html>
