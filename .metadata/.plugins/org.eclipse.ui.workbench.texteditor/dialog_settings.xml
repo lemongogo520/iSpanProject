@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="java.lang.Class">
+		<item key="replaceBarOpen" value="false"/>
+		<item key="selection" value="&#x09;INSERT INTO users"/>
+		<list key="findhistory">
+			<item value="active"/>
+			<item value="logo"/>
+			<item value="sidebar"/>
+			<item value="getUsersByIdAccount"/>
+			<item value="dto"/>
+			<item value="existsByAccount"/>
+			<item value="checkRememberToken"/>
+			<item value="register"/>
+			<item value="&#x09;INSERT INTO users"/>
+			<item value="generateLoginToken"/>
+			<item value="請輸入"/>
+			<item value="springframework"/>
+		</list>
+	</section>
+</section>

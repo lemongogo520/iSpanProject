@@ -1,0 +1,29 @@
+1785123094278	Move compilation units
+1785130655537	Rename package 'forum.board.execption'
+1785131914672	Move compilation unit
+1785131921529	Delete element
+1785132735107	Rename type 'LoginLogController'
+1785132741262	Rename package 'forum.board.loginlog'
+1785132752155	Rename type 'LoginLogRepository'
+1785132760531	Rename type 'LoginLogService'
+1785132780204	Rename type 'LoginRepository'
+1785134672105	Rename compilation unit 'sha256.java'
+1785292609625	Rename resource 'data.sql'
+1785292614913	Rename resource 'adminData.sql'
+1785292628151	Rename resource 'admindata.sql'
+1785292637415	Rename resource 'adminInit.sql'
+1785294570866	Move compilation unit
+1785306758943	Copy package
+1785306779442	Delete element
+1785306804499	Move compilation unit
+1785306807904	Delete element
+1785306852130	Move compilation units
+1785306889487	Delete element
+1785308956179	Rename resource 'GetFile.html'
+1785308974053	Rename resource 'getFile.html'
+1785312042831	Rename type 'SystemAdminConfig'
+1785313006604	Rename resource 'setting.html'
+1785313092012	Rename resource 'fragments'
+1785313376471	Copy file
+1785313383085	Rename resource '使用者管理.html'
+1785313409821	Copy file
